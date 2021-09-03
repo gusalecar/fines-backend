@@ -10,3 +10,10 @@ DEBUG = False
 SECRET_KEY = os.environ['SECRET_KEY']
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+MIDDLEWARE.insert(
+    MIDDLEWARE.index('django.middleware.security.SecurityMiddleware') + 1,
+    'whitenoise.middleware.WhiteNoiseMiddleware'
+)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

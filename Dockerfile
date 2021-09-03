@@ -7,6 +7,7 @@ RUN pip install pipenv
 RUN pipenv install --deploy --ignore-pipfile
 COPY . /code/
 RUN pipenv run python manage.py migrate
+RUN pipenv run python manage.py collectstatic
 
 EXPOSE 8000
 
